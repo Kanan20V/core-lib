@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.Kanan20V'
-version = '1.0.3'
+version = '1.0.4'
 description = 'core-lib'
 
 java {
@@ -19,7 +19,6 @@ java {
 
 repositories {
     mavenCentral()
-
 }
 
 dependencies {
@@ -31,22 +30,28 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            groupId = 'com.github.Kanan20V'
-            artifactId = 'core-lib'
-            version = project.version
-        }
-    }
+tasks.named('bootJar') {
+    enabled = false
 }
 
 tasks.named('jar') {
+    enabled = true
     manifest {
         attributes(
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.version
         )
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.github.Kanan20V'
+            artifactId = 'core-lib'
+            version = project.version
+        }
     }
 }

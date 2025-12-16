@@ -19,6 +19,7 @@ java {
 
 repositories {
     mavenCentral()
+
 }
 
 dependencies {
@@ -34,7 +35,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-
             groupId = 'com.github.Kanan20V'
             artifactId = 'core-lib'
             version = project.version
